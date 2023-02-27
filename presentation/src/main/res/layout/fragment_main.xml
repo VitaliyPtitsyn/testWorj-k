@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.presentation.screens.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainFragment">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="message,inputPoints,
+            goToRide,error_message,progress"
+            app:flow_verticalGap="24dp"
+            app:flow_verticalStyle="spread"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MainFragment" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputPoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="97dp"
+            android:enabled="@{!vm.isLoading}"
+            android:hint="@string/app_name"
+            android:paddingHorizontal="32dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:text="@={vm.pointsText}"
+                app:maxRange="@{1000}"
+                app:minRange="@{0}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/goToRide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{!vm.isLoading}"
+            android:onClick="@{()->vm.goToRide()}"
+            android:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.displayError}"
+            app:goneVisibility="@{vm.isErrorVisible}" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            app:goneVisibility="@{vm.isLoading}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

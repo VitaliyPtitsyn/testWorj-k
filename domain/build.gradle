@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.example.domain'
+
+    compileSdkVersion build_versions.compileSdkVersion
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'proguard-rules.pro'
+
+    }
+
+    testOptions {
+        unitTests.includeAndroidResources = true
+        unitTests.returnDefaultValues = true
+
+    }
+}
+
+dependencies {
+    api deps.kotlin.stdlib
+    api deps.kotlin.coroutines_android
+
+    api deps.support.app_compat
+    api deps.support.core
+    api deps.tools.timber
+
+
+    api deps.dagger.hilt
+    kapt deps.dagger.hilt_compiler
+    kapt deps.dagger.hilt_androidx_compiler
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

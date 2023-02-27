@@ -1,0 +1,71 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.example.presentation'
+    compileSdkVersion build_versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures { dataBinding = true }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(':domain:')
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation deps.support.activity
+    implementation deps.support.fragment
+    implementation deps.support.annotations
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.support.core
+    implementation deps.google.material
+
+    implementation deps.jetpack.safeState
+    implementation deps.jetpack.viewmodel
+    implementation deps.jetpack.livedata
+    implementation deps.jetpack.lifecycleruntime
+    implementation deps.jetpack.navigationFragment
+    implementation deps.jetpack.customView
+    implementation deps.jetpack.navigationUi
+
+    api deps.dagger.hilt
+    kapt deps.dagger.hilt_compiler
+    kapt deps.dagger.hilt_androidx_compiler
+
+    implementation deps.jetpack.navigationUi
+    implementation deps.jetpack.navigationFragment
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
