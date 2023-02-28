@@ -1,0 +1,50 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/points_spacing" />
+
+        <include layout="@layout/points_table_border" />
+
+        <TextView
+            android:id="@+id/txt_order_title"
+            style="@style/AppTheme.textStyle.TableTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/order_title"
+            app:layout_constraintBottom_toTopOf="@+id/gl_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/gl_order_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start"
+            app:layout_constraintTop_toTopOf="@+id/gl_top" />
+
+
+        <TextView
+            android:id="@+id/txt_x_axis_title"
+            style="@style/AppTheme.textStyle.TableTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/x_axis_title"
+            app:layout_constraintBottom_toTopOf="@+id/gl_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/gl_poinss_seporator"
+            app:layout_constraintStart_toStartOf="@+id/gl_order_end"
+            app:layout_constraintTop_toTopOf="@+id/gl_top" />
+
+        <TextView
+            android:id="@+id/txt_y_axis_title"
+            style="@style/AppTheme.textStyle.TableTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/y_axis_title"
+            app:layout_constraintBottom_toTopOf="@+id/gl_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_poinss_seporator"
+            app:layout_constraintTop_toTopOf="@+id/gl_top" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

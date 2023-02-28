@@ -12,5 +12,42 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="recyclerViewStyle">@style/AppTheme.recycler</item>
+        <item name="android:textViewStyle">@style/AppTheme.textStyle</item>
+
     </style>
+
+    <style name="AppTheme" />
+
+    <style name="AppTheme.recycler">
+        <item name="android:paddingStart">@dimen/distance</item>
+        <item name="android:paddingEnd">@dimen/distance</item>
+        <item name="android:paddingTop">@dimen/doubleDistance</item>
+        <item name="android:paddingBottom">144dp</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:fillViewport">true</item>
+    </style>
+
+    <style name="AppTheme.textStyle">
+        <item name="android:paddingStart">@dimen/minDistance</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AppTheme.textStyle.TableTitle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingStart">@dimen/distance</item>
+    </style>
+
+    <style name="AppTheme.textStyle.TableRow">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:paddingStart">@dimen/distance</item>
+    </style>
+
+    <style name="AppTheme.textStyle.SelectedRow">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
 </resources>

@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainFragment : BaseMVVMFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
-    val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
     override fun attachViewModels(
         binding: FragmentMainBinding,

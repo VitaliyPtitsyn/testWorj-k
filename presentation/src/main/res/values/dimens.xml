@@ -1,0 +1,16 @@
+<resources>
+
+    <dimen name="minDistance">2dp</dimen>
+    <dimen name="halfDistance">4dp</dimen>
+    <dimen name="distance">8dp</dimen>
+    <dimen name="distanceAndHalf">12dp</dimen>
+    <dimen name="doubleDistance">16dp</dimen>
+    <dimen name="tripleDistance">24dp</dimen>
+    <dimen name="fourfoldDistance">32dp</dimen>
+    <dimen name="fivefoldDistance">40dp</dimen>
+    <dimen name="sixfoldDistance">48dp</dimen>
+    <dimen name="sevenfoldDistance">54dp</dimen>
+
+    <dimen name="table_line_thinkes">2dp</dimen>
+
+</resources>

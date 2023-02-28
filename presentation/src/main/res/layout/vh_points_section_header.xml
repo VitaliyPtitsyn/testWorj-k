@@ -1,0 +1,42 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+
+        <variable
+            name="rangeHeader"
+            type="com.example.presentation.screens.result.table.TablePointsTypes.RangeHeader" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/points_spacing" />
+
+        <TextView
+            android:id="@+id/txt_order_title"
+            style="@style/AppTheme.textStyle.TableTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/range_title_format"
+            app:layout_constraintBottom_toTopOf="@+id/gl_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start"
+            app:layout_constraintTop_toTopOf="@+id/gl_top"
+            app:rangeHeader="@{rangeHeader}" />
+
+        <View
+            android:id="@+id/bootmLine"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/table_line_thinkes"
+            android:background="@color/table_seporator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

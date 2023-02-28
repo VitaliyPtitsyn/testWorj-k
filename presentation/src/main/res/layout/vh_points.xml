@@ -1,0 +1,62 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pointRaw"
+            type="com.example.presentation.screens.result.table.TablePointsTypes.PointsRaw" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/points_spacing" />
+
+        <include layout="@layout/points_table_border" />
+
+        <TextView
+            android:id="@+id/txt_order_title"
+            style="@style/AppTheme.textStyle.TableRow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/gl_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/gl_order_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start"
+            app:layout_constraintTop_toTopOf="@+id/gl_top"
+            app:statPointOrder="@{pointRaw}"
+            tools:text="@string/order_format" />
+
+
+        <TextView
+            android:id="@+id/txt_x_axis_title"
+            style="@style/AppTheme.textStyle.TableRow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/gl_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/gl_poinss_seporator"
+            app:layout_constraintStart_toStartOf="@+id/gl_order_end"
+            app:layout_constraintTop_toTopOf="@+id/gl_top"
+            app:xAxis="@{pointRaw}"
+            tools:text="@string/x_axis_format" />
+
+        <TextView
+            android:id="@+id/txt_y_axis_title"
+            style="@style/AppTheme.textStyle.TableRow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/gl_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_poinss_seporator"
+            app:layout_constraintTop_toTopOf="@+id/gl_top"
+            app:yAxis="@{pointRaw}"
+            tools:text="@string/y_axis_format" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

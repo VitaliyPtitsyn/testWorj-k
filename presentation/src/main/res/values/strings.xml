@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TestWorkVitaliyPtitsyn</string>
+    <string name="order_title">Order</string>
+    <string name="range_title_format">Range: %1$s - %2$s</string>
+    <string name="order_format">Order: %1$s</string>
+    <string name="y_axis_title">Y-axis</string>
+    <string name="y_axis_format">Y: %1$s</string>
+    <string name="x_axis_title">X-axis</string>
+    <string name="x_axis_format">X: %1$s</string>
+
+    <string name="charts">Charts</string>
+    <string name="table">Table</string>
+
 </resources>
