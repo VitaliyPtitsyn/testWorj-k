@@ -1,10 +1,13 @@
 package com.example.presentation
 
+import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.ActivityNavigator
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import com.example.presentation.base.BaseViewModel
 import com.example.presentation.navigation.NavigationHandler
 import com.example.presentation.navigation.Screens
@@ -23,7 +26,7 @@ class MainActivityViewModel @Inject constructor(
     navigationHandler: NavigationHandler
 ) : BaseViewModel(
     navigationHandler = navigationHandler
-) {
+), NavController.OnDestinationChangedListener {
 
     val destination = MutableStateFlow<Int>(-1)
 
@@ -36,8 +39,11 @@ class MainActivityViewModel @Inject constructor(
         lvNavBottomApp.value?.fabBtnModel?.action?.invoke()
     }
 
-    fun postDestination(id:Int)  = viewModelScope.launch {
+    fun postDestination(id: Int) = viewModelScope.launch {
         destination.emit(id)
     }
 
+    override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+        postDestination(destination.id)
+    }
 }

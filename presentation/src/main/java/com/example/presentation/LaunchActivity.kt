@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.core.presentation.base.screens.base.BaseMVVMActivity
 import com.example.presentation.databinding.ActivityLaunchBinding
 import com.example.presentation.navigation.Screens
@@ -21,13 +22,11 @@ class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity
 
     val viewModel: MainActivityViewModel by viewModels()
 
-    private val mainNavigation: NavController by lazy {
-        Navigation.findNavController(this, R.id.main_navigation).apply {
-            addOnDestinationChangedListener { controler, destination, arguments ->
-                viewModel.postDestination(destination.id)
-            }
+    private val mainNavigation: NavController
+        get() = Navigation.findNavController(this, R.id.main_navigation).apply {
+            addOnDestinationChangedListener(viewModel)
         }
-    }
+
 
     override fun attachViewModels(binding: ActivityLaunchBinding) {
         binding.vm = viewModel
@@ -42,12 +41,12 @@ class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity
     private fun observeNavigation() {
         viewModel.viewModelScope.launch(Dispatchers.Main) {
             viewModel.navigationHandler.observeNavigation().collectLatest {
-                when {
-                    it is Screens.NavigateBack -> {
+                when (it) {
+                    is Screens.NavigateBack -> {
                         mainNavigation.popBackStack()
                     }
-                    it is Screens.ShareImage -> shareImage(it.imageUri)
-                    it is Screens.MainScreen -> handleNaviagtion(it)
+                    is Screens.ShareImage -> shareImage(it.imageUri)
+                    is Screens.MainScreen -> handleNaviagtion(it)
                 }
             }
         }
@@ -65,21 +64,14 @@ class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity
         when (it) {
 
             is Screens.MainScreen.ToResultScreen -> {
-                if (mainNavigation.currentDestination?.id == R.id.main_fragment) {
-                    val desination = MainFragmentDirections.actionMainFragmentToResultFragment(
-                        it.statisticsPoints
-                    )
-                    mainNavigation.navigate(
-                        desination
-                    )
-                }
+                val desination = MainFragmentDirections.actionMainFragmentToResultFragment(it.statisticsPoints)
+                mainNavigation.navigate(desination)
             }
         }
+
     }
 
-    override fun onBackPressed() {
-        if (!mainNavigation.popBackStack()) {
-            super.onBackPressed()
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return mainNavigation.navigateUp() || super.onSupportNavigateUp()
     }
 }
