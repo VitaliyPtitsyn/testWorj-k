@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.core.presentation.base.screens.base.BaseMVVMActivity
 import com.example.presentation.databinding.ActivityLaunchBinding
@@ -22,11 +23,14 @@ class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity
 
     val viewModel: MainActivityViewModel by viewModels()
 
-    private val mainNavigation: NavController
-        get() = Navigation.findNavController(this, R.id.main_navigation).apply {
+    val navHostFragment by lazy {
+        supportFragmentManager.findFragmentById(R.id.main_navigation) as NavHostFragment
+    }
+    val mainNavigation by lazy {
+        navHostFragment.navController.apply {
             addOnDestinationChangedListener(viewModel)
         }
-
+    }
 
     override fun attachViewModels(binding: ActivityLaunchBinding) {
         binding.vm = viewModel
