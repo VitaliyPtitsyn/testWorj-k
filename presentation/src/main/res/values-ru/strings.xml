@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name" translatable="false">Test Work don by Vitaliy Ptitsyn</string>
+
+    <string name="app_description">
+       Тестовая работа Виталия Птицына
+          Чистая архитектура, Hilt, AppJetpack и прочее…
+          Чтобы запустить приложение, введите баллы cpunt и нажмите кнопку
+    </string>
+
+    <string name="input_points_hint">Введите количество точек</string>
+    <string name="goToRide">Поехали, кречал Гагарин</string>
+    <string name="shareChart">Поделится графиком</string>
+    <string name="order_title">Порядок</string>
+    <string name="range_title_format">Диапазон: %1$s - %2$s</string>
+    <string name="order_format">Порядок: %1$s</string>
+    <string name="y_axis_title">ось ординат</string>
+    <string name="y_axis_format">Y: %1$s</string>
+    <string name="x_axis_title">ось абсцисc</string>
+    <string name="x_axis_format">X: %1$s</string>
+
+    <string name="charts">График</string>
+    <string name="table">Таблица</string>
+
+    <string name="input_error">Некоретный ввод</string>
+    <string name="smth_when_wrong">Чет не так, жми еще</string>
+
+
+</resources>
