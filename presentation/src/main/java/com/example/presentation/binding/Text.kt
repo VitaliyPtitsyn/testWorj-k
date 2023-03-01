@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.domain.models.StatPoint
 import com.example.presentation.R
+import com.example.presentation.errorHadling.InvalidInputError
 import com.example.presentation.screens.result.table.TablePointsTypes
 import com.example.presentation.tools.InputFilterMinMax
 import com.example.presentation.tools.SpanFormatter
@@ -16,6 +17,16 @@ fun EditText.setRange(min: Int?, max: Int?) {
         filters = arrayOf(InputFilterMinMax(min, max))
     } else {
         filters = emptyArray()
+    }
+}
+
+@BindingAdapter("general_error")
+internal fun TextView.errorDisplay(e: java.lang.Exception?) {
+    if (e == null) return
+
+    text = when(e){
+        is InvalidInputError -> context.getString(R.string.input_error)
+        else ->  context.getString(R.string.smth_when_wrong)
     }
 }
 

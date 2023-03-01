@@ -2,6 +2,7 @@ package com.example.presentation.screens.result.chart
 
 import android.graphics.Color
 import android.os.Bundle
+import androidx.core.view.drawToBitmap
 import androidx.fragment.app.viewModels
 import com.example.presentation.R
 import com.example.presentation.base.BaseMVVMFragment
@@ -35,9 +36,13 @@ class ChartFragment : BaseMVVMFragment<FragmentChartBinding>(R.layout.fragment_c
     )
 
     override fun attachViewModels(binding: FragmentChartBinding, savedInstanceState: Bundle?) {
-
+        binding.share = this::shareChart
         setUpChart(binding.lineChart)
 
+    }
+
+    fun shareChart() {
+        viewModel.saveImage(requireContext(), binding.lineChart.drawToBitmap())
     }
 
     private fun setUpChart(chart: LineChart) {

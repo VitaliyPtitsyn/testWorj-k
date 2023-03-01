@@ -21,6 +21,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:defaultNavHost="true"
             app:navGraph="@navigation/main_navigation" />
 
 
@@ -31,6 +32,7 @@
             android:layout_gravity="bottom"
             android:gravity="center"
             android:visibility="gone"
+            app:backgroundTint="@color/colorPrimary"
             app:bottomAppState="@{vm.lvNavBottomApp}"
             app:fabAlignmentMode="end"
             app:fabAnimationMode="slide"
@@ -48,7 +50,7 @@
             app:bottomState="@{vm.lvNavBottomApp}"
             app:layout_anchor="@id/bottom_app_bar"
             app:srcCompat="@drawable/ic_back_flip"
-            app:tint="@color/toolbar"
+            app:tint="@color/colorOnSecondary"
             tools:visibility="visible" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

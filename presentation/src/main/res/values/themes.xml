@@ -1,14 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TestWorkVitaliyPtitsyn" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.TestWorkVitaliyPtitsyn" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryDark</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -20,10 +20,8 @@
     <style name="AppTheme" />
 
     <style name="AppTheme.recycler">
-        <item name="android:paddingStart">@dimen/distance</item>
-        <item name="android:paddingEnd">@dimen/distance</item>
         <item name="android:paddingTop">@dimen/doubleDistance</item>
-        <item name="android:paddingBottom">144dp</item>
+        <item name="android:paddingBottom">?actionBarSize</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:fillViewport">true</item>
     </style>
@@ -31,23 +29,32 @@
     <style name="AppTheme.textStyle">
         <item name="android:paddingStart">@dimen/minDistance</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_major</item>
     </style>
 
-    <style name="AppTheme.textStyle.TableTitle">
+    <style name="AppTheme.textStyle.error" parent="AppTheme.textStyle">
+        <item name="android:textColor">@color/design_default_color_error</item>
+    </style>
+
+    <style name="AppTheme.textStyle.Headline" parent="AppTheme.textStyle">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AppTheme.textStyle.TableTitle" parent="AppTheme.textStyle">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:paddingStart">@dimen/distance</item>
     </style>
 
-    <style name="AppTheme.textStyle.TableRow">
+    <style name="AppTheme.textStyle.TableRow" parent="AppTheme.textStyle">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textColor">@color/hint_color</item>
         <item name="android:paddingStart">@dimen/distance</item>
     </style>
 
-    <style name="AppTheme.textStyle.SelectedRow">
+    <style name="AppTheme.textStyle.SelectedRow" parent="AppTheme.textStyle">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColor">@color/text_major</item>
     </style>
 
 </resources>

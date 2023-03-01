@@ -6,17 +6,15 @@ import com.example.presentation.R
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.example.presentation.uiModels.FabPosition
 import com.example.presentation.uiModels.NavBottomAppState
+
 @BindingAdapter("bottomAppState")
 fun BottomAppBar.bindAppState(navBottomAppState: NavBottomAppState?) {
-    visibility=if(navBottomAppState?.isBarVisible==false) View.GONE else View.VISIBLE
+    visibility = if (navBottomAppState?.isBarVisible == false) View.GONE else {
+        performShow()
+        View.VISIBLE
+    }
     bindNavBottomApp(navBottomAppState)
     bindNavigation(navBottomAppState)
-}
-
-
-@BindingAdapter("observeShowEvent")
-fun BottomAppBar.bindShowEvent(showData: Boolean) {
-    if (showData) performShow() else performHide()
 }
 
 fun BottomAppBar.bindNavBottomApp(navBottomAppState: NavBottomAppState?) {

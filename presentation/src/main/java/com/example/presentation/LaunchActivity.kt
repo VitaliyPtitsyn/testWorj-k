@@ -1,6 +1,8 @@
 package com.example.presentation
 
 
+import android.content.Intent
+import android.net.Uri
 import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
@@ -22,15 +24,19 @@ class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity
     private val mainNavigation: NavController by lazy {
         Navigation.findNavController(this, R.id.main_navigation).apply {
             addOnDestinationChangedListener { controler, destination, arguments ->
-                viewModel.destination.postValue(destination.id)
+                viewModel.postDestination(destination.id)
             }
         }
     }
 
-
     override fun attachViewModels(binding: ActivityLaunchBinding) {
         binding.vm = viewModel
         observeNavigation()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainNavigation.currentDestination?.let { viewModel.postDestination(it.id) }
     }
 
     private fun observeNavigation() {
@@ -38,13 +44,21 @@ class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity
             viewModel.navigationHandler.observeNavigation().collectLatest {
                 when {
                     it is Screens.NavigateBack -> {
-
                         mainNavigation.popBackStack()
                     }
+                    it is Screens.ShareImage -> shareImage(it.imageUri)
                     it is Screens.MainScreen -> handleNaviagtion(it)
                 }
             }
         }
+    }
+
+    private fun shareImage(uri: Uri) {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.putExtra(Intent.EXTRA_STREAM, uri)
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        intent.setType("image/png")
+        startActivity(intent)
     }
 
     private fun handleNaviagtion(it: Screens.MainScreen) {

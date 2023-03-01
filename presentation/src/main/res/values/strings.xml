@@ -1,5 +1,15 @@
 <resources>
-    <string name="app_name">TestWorkVitaliyPtitsyn</string>
+    <string name="app_name" translatable="false">Test Work don by Vitaliy Ptitsyn</string>
+
+    <string name="app_description">
+        Test Work don by Vitaliy Ptitsyn
+        Clean architure, Hilt, AppJetpack and other…
+        To start enjoin the app enter points cpunt and press the button
+    </string>
+
+    <string name="input_points_hint">Enter points count</string>
+    <string name="goToRide">Let\'s go for a ride</string>
+    <string name="shareChart">Share this chart</string>
     <string name="order_title">Order</string>
     <string name="range_title_format">Range: %1$s - %2$s</string>
     <string name="order_format">Order: %1$s</string>
@@ -10,5 +20,9 @@
 
     <string name="charts">Charts</string>
     <string name="table">Table</string>
+
+    <string name="input_error">Input incorrect</string>
+    <string name="smth_when_wrong">Smth when wrong pls try again</string>
+
 
 </resources>

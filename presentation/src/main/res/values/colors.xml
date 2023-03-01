@@ -1,18 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="appBar">@color/colorPrimary</color>
+    <color name="toolbar">@color/colorPrimary</color>
+    <color name="surface">@color/warm_grey_elevation_0</color>
+    <color name="surface_elevated">@color/grey_elevation_2</color>
 
-    <color name="hintColor">#686868</color>
-    <color name="textColor">#FF000000</color>
+    <color name="hint_color">@color/ivory</color>
+    <color name="colorAccent">@color/colorSecondary</color>
+
+    <color name="text_title">@color/warm_grey_elevation_4</color>
+    <color name="text_shadowed">@color/ivory</color>
+    <color name="text_major">#040404</color>
+    <color name="text_selected">@color/colorSecondary</color>
+
+    <color name="title_tint">@color/warm_grey_elevation_4</color>
+    <color name="appbar_tint">@color/grey</color>
+    <color name="background_box">@color/item_background_shadow_30</color>
+
+    <color name="colorPrimary">#8ac691</color>
+    <color name="colorPrimaryDark">#75b97c</color>
+    <color name="colorPrimaryLite">#8cc592</color>
+    <color name="colorPrimaryDisabled">#333A34</color>
+    <color name="colorSecondary">#f3b560</color>
+    <color name="colorSecondaryDark">#fd9a64</color>
+    <color name="colorSecondaryDisabled">#b5651f</color>
 
 
-    <color name="toolbar">#5E81FF</color>
-    <color name="table_seporator">#464951</color>
+    <color name="colorHolderRed">#cf474d</color>
+
+    <color name="colorSecondary_30">#4Df3b560</color>
+    <color name="shadow_color">#4D000000</color>
+    <color name="white_color">#E6EDEBEB</color>
+
+    <color name="green_welcome_color">#D927AE60</color>
+    <color name="colorPrimary_95">#F2338A3E</color>
+    <color name="colorSecondary_95">#F2E68C39</color>
+
+
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnPrimaryDark">#B9B9B9</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorOnSecondaryDark">#B9B9B9</color>
+
+    <color name="coffee_toolbar">#373737</color>
+    <color name="colorShadowedSurface">#666560</color>
+
+    <color name="main_background_color">#202020</color>
+    <color name="item_gradient_shadow">#4D000000</color>
+
+    <color name="whiteBackground">#ffff</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="text_white">#ffff</color>
+    <color name="text_white_selected">#E6E6E6</color>
+
+    <color name="grey_transperent">#59969696</color>
+    <color name="grey_light">#969696</color>
+    <color name="grey">#666666</color>
+    <color name="grey_selected">#555555</color>
+    <color name="grey_shadow">#40666666</color>
+
+    <color name="item_background_shadow_30">#59F3F3F3</color>
+
+    <color name="ivory">#FFFFF0</color>
+
+    <color name="warm_grey_elevation_0">#52606D</color>
+    <color name="warm_grey_elevation_1">#616e7c</color>
+    <color name="warm_grey_elevation_2">#7b8794</color>
+    <color name="warm_grey_elevation_3">#9aa5b1</color>
+    <color name="warm_grey_elevation_4">#cbd2d9</color>
+
+    <color name="grey_elevation_0">#202020</color>
+    <color name="grey_elevation_1">#424242</color>
+    <color name="grey_elevation_2">#616161</color>
+    <color name="grey_elevation_3">#757575</color>
+    <color name="grey_elevation_4">#9e9e9e</color>
+
+    <color name="pretty_color_1">#21a9e3</color>
+    <color name="pretty_color_2">#EEF36A</color>
+    <color name="pretty_color_3">#5171A5</color>
+    <color name="pretty_color_4">#C34A36</color>
+    <color name="pretty_color_5">#845EC2</color>
+    <color name="table_seporator">@color/item_background_shadow_30</color>
 
 </resources>

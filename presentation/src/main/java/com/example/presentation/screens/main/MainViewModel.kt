@@ -4,10 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.domain.usecases.RequestPointsUseCase
+import com.example.presentation.R
 import com.example.presentation.base.BaseViewModel
 import com.example.presentation.errorHadling.InvalidInputError
 import com.example.presentation.navigation.NavigationHandler
 import com.example.presentation.navigation.Screens
+import com.example.presentation.uiModels.FabBtnModel
+import com.example.presentation.uiModels.FabPosition
+import com.example.presentation.uiModels.NavBottomAppState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,30 +30,38 @@ class MainViewModel @Inject constructor(
 
     val isLoading = MutableLiveData<Boolean>()
 
-    val displayError = MutableLiveData<String>()
+    val displayError = MutableLiveData<java.lang.Exception?>()
 
-    val isErrorVisible = displayError.map { it.isNotBlank() }
+    val isErrorVisible = displayError.map { it != null }
+
+
+    val state = NavBottomAppState(
+        fabBtnModel = FabBtnModel(
+            imgResId = R.drawable.baseline_directions_car_24,
+            FabPosition.CENTER,
+            action = { goToRide() },
+        ),
+        isBarVisible = true
+    )
+
+    init {
+        viewModelScope.launch {
+            navigationHandler.postAppState(R.id.main_fragment, state)
+        }
+    }
 
     fun goToRide() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 isLoading.postValue(true)
-                displayError.postValue("")
+                displayError.postValue(null)
 
                 val count = pointsText.value?.toInt() ?: throw InvalidInputError()
                 val points = getPointsUseCase.requestPoints(count)
                 Timber.d("points $points")
                 navigationHandler.sendNavigation(Screens.MainScreen.ToResultScreen(points))
             } catch (e: java.lang.Exception) {
-                val text = when (e) {
-                    is InvalidInputError -> {
-                        "Invalid imput"
-                    }
-                    else -> {
-                        "smth whne wrong"
-                    }
-                }
-                displayError.postValue(text)
+                displayError.postValue(e)
                 Timber.e(e)
             } finally {
                 isLoading.postValue(false)
