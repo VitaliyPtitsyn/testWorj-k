@@ -4,29 +4,23 @@ package com.example.presentation
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.viewModels
-import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.core.presentation.base.screens.base.BaseMVVMActivity
 import com.example.presentation.databinding.ActivityLaunchBinding
 import com.example.presentation.navigation.Screens
 import com.example.presentation.screens.main.MainFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity_launch) {
 
-    val viewModel: MainActivityViewModel by viewModels()
+    private val viewModel: MainActivityViewModel by viewModels()
 
-    val navHostFragment by lazy {
+    private val navHostFragment by lazy {
         supportFragmentManager.findFragmentById(R.id.main_navigation) as NavHostFragment
     }
-    val mainNavigation by lazy {
+    private val mainNavigation by lazy {
         navHostFragment.navController.apply {
             addOnDestinationChangedListener(viewModel)
         }
@@ -43,8 +37,9 @@ class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity
     }
 
     private fun observeNavigation() {
-        viewModel.viewModelScope.launch(Dispatchers.Main) {
-            viewModel.navigationHandler.observeNavigation().collectLatest {
+        viewModel.navigationHandler.observeNavigation()
+            .asLiveData()
+            .observe(this) {
                 when (it) {
                     is Screens.NavigateBack -> {
                         mainNavigation.popBackStack()
@@ -53,7 +48,6 @@ class LaunchActivity : BaseMVVMActivity<ActivityLaunchBinding>(R.layout.activity
                     is Screens.MainScreen -> handleNaviagtion(it)
                 }
             }
-        }
     }
 
     private fun shareImage(uri: Uri) {

@@ -76,6 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.textStyle.error"
+            android:textColor="@color/design_default_color_error"
             app:general_error="@{vm.displayError}"
             app:goneVisibility="@{vm.isErrorVisible}" />
 

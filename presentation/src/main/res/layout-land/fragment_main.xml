@@ -17,6 +17,7 @@
         tools:context=".ui.main.MainFragment"
         android:paddingTop="@dimen/doubleDistance"
         android:paddingBottom="?actionBarSize"
+
         >
 
 
@@ -83,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.textStyle.error"
+            android:textColor="@color/design_default_color_error"
             app:general_error="@{vm.displayError}"
             app:goneVisibility="@{vm.isErrorVisible}" />
 
@@ -90,7 +92,7 @@
             android:id="@+id/progress"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            app:goneVisibility="@{vm.isLoading}"
+            app:invisibleVisibility="@{vm.isLoading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/flow"
